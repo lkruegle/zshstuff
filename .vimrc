@@ -1,5 +1,10 @@
 
 set runtimepath+=~/.vim_runtime
+set nowrap
+set scrolloff=8
+" set signcolumn=yes " enable when adding git integration
+set nu
+set relativenumber
 
 source ~/.vim_runtime/vimrcs/basic.vim
 source ~/.vim_runtime/vimrcs/filetypes.vim
@@ -37,8 +42,19 @@ endfunction
 
 au BufReadPost *.html set syntax=jinja
 
+let mapleader = " "
+let NERDTreeQuitOnOpen=1
+
+" these currently break new tab mapping
+" nnoremap ; :
+" nnoremap : ;
+
 " enables Taglist
 filetype on
+map tlt :TlistToggle<CR>
+
+nnoremap <S-Tab> :tabprev<CR>
+inoremap <S-Tab> <C-d>
 
 " Remaps pane switching to CTRL+h,j,k,l
 nnoremap <C-J> <C-W>j
@@ -49,5 +65,7 @@ nnoremap <C-H> <C-W>h
 " Toggle NERD Tree with CTRL+n
 map <C-n> :NERDTreeToggle<CR>
 
-" Remove last search highlighting
-" nnoremap <esc> :noh <return><esc>
+nnoremap <space> za
+nnoremap <S><space> zA
+
+set foldlevel=99
