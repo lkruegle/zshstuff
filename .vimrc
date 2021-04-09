@@ -1,4 +1,3 @@
-
 set runtimepath+=~/.vim_runtime
 set nowrap
 set scrolloff=8
@@ -61,11 +60,12 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
+nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 
 " Toggle NERD Tree with CTRL+n
 map <C-n> :NERDTreeToggle<CR>
 
-nnoremap <space> za
-nnoremap <S><space> zA
+nnoremap <leader>n :noh <return><esc>
+nnoremap <leader>s :vsp<space>
 
 set foldlevel=99
