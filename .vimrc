@@ -1,3 +1,5 @@
+" TODO: Port these to my vim repo or merge the two. Depends on https://github.com/lkruegle/personal_vim
+
 set runtimepath+=~/.vim_runtime
 set nowrap
 set scrolloff=8
