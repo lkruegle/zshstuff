@@ -19,6 +19,8 @@ else
 fi
 
 if ! [[ -L "$HOME/.config/nvim/init.vim" ]]; then
+    # TODO: Figure out how to auto create these dirs if they don't exist
+    # mkdir "$HOME/.config/nvim"
     ln -s "$PWD/config/nvim/init.vim" "$HOME/.config/nvim/init.vim"
 else
     echo ".config/nvim/init.vim already exists. Remove it to replace."
