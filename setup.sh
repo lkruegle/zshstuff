@@ -13,13 +13,13 @@ done
 
 # Symlink configurations
 if ! [[ -L "$HOME/.zshrc" ]]; then
-    ln -s "$PWD/dotfiles/.zshrc" $HOME;
+    ln -s "$PWD/dotfiles/.zshrc" "$HOME/.zshrc";
 else
     echo ".zshrc already exists. Remove it to replace."
 fi
 
 if ! [[ -L "$HOME/.config/nvim/init.vim" ]]; then
-    ln -s "$PWD/config/nvim/init.vim" "$HOME/.config/nvim"
+    ln -s "$PWD/config/nvim/init.vim" "$HOME/.config/nvim/init.vim"
 else
     echo ".config/nvim/init.vim already exists. Remove it to replace."
 fi
