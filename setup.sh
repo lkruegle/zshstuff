@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Install Brew
+if which brew > /dev/null; then
+    echo "Brew installed, continuing..."
+else
+    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+fi
+
 # Install packages
 PACKAGES=$(cat "packages.txt")
 for pkg in $PACKAGES; do
