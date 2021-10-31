@@ -1,6 +1,9 @@
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:$HOME/google-cloud-sdk/bin:${PATH}"
 export PATH
 
+export EDITOR=nvim
+export GIT_EDITOR=$EDITOR
+
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -27,7 +30,7 @@ newb() {
 }
 
 # open ~/.zshrc in using the default editor specified in $EDITOR
-alias ec="nvim $HOME/.zshrc"
+alias ec="$EDITOR $HOME/.zshrc"
 # source ~/.zshrc
 alias sc="source $HOME/.zshrc"
 
