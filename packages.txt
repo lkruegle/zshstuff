@@ -1,0 +1,6 @@
+pure
+thefuck
+zsh-syntax-highlighting
+tree
+neovim
+fzf

@@ -1,12 +1,25 @@
 #!/bin/sh
 
-# Install Tools
-brew install neovim
-brew install pure
-brew install thefuck
-brew install zsh-syntax-highlighting
-brew install tree
+# Install packages
+PACKAGES=$(cat "packages.txt")
+for pkg in $PACKAGES; do
+    if brew ls --versions $pkg > /dev/null; then
+        echo "Package '$pkg' is already installed";
+    else
+        echo "installing '$pkg':";
+        brew install $pkg;
+    fi
+done
 
 # Symlink configurations
-ln -s "$PWD/dotfiles/.zshrc" ~
-ln -s "$PWD/config/nvim/init.vim" ~/.config/nvim
+if ! [[ -L "$HOME/.zshrc" ]]; then
+    ln -s "$PWD/dotfiles/.zshrc" $HOME;
+else
+    echo ".zshrc already exists. Remove it to replace."
+fi
+
+if ! [[ -L "$HOME/.config/nvim/init.vim" ]]; then
+    ln -s "$PWD/config/nvim/init.vim" "$HOME/.config/nvim"
+else
+    echo ".config/nvim/init.vim already exists. Remove it to replace."
+fi
