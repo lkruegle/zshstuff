@@ -27,10 +27,7 @@ newb() {
 }
 
 # open ~/.zshrc in using the default editor specified in $EDITOR
-alias ec="vim $HOME/.zshrc"
-
-alias ev="vim $HOME/.vimrc"
-
+alias ec="nvim $HOME/.zshrc"
 # source ~/.zshrc
 alias sc="source $HOME/.zshrc"
 
