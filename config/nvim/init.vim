@@ -28,11 +28,14 @@ set undofile
 " Pop up menu options TODO look into these
 set cot=menuone,noinsert,noselect shm+=c
 
+" Auto Install VimPlug and all plugins on startup
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
+" TODO: Setup hrsh7th/nvim-cmp configuration
 
 call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/popup.nvim'
@@ -48,19 +51,12 @@ Plug 'mbbill/undotree'
 Plug 'lifepillar/vim-solarized8'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jremmen/vim-ripgrep'
-Plug 'yassinebridi/vim-purpura'
 Plug 'tpope/vim-abolish'
 call plug#end()
 
 set background=dark
-
 colorscheme gruvbox
 
-"Theses settings all make purpura work right
-"colorscheme purpura
-"set termguicolors
-"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 lua <<EOF
 -- configure lsp
@@ -88,7 +84,6 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 " end completion mappings
-
 
 let mapleader = " "
 
@@ -164,4 +159,3 @@ augroup GROUP_1
     "autocmd BufEnter * lua require'completion'.on_attach()
     autocmd BufNewFile,BufRead,BufEnter *.html set syntax=htmljinja
 augroup END
-
