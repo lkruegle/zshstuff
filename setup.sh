@@ -25,6 +25,9 @@ else
     echo ".zshrc already exists. Remove it to replace."
 fi
 
+# Add .zshrc_local for machine specific config
+touch .zshrc_local
+
 if ! [[ -L "$HOME/.config/nvim/init.vim" ]]; then
     # TODO: Figure out how to auto create these dirs if they don't exist
     # mkdir "$HOME/.config/nvim"
