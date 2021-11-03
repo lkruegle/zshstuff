@@ -41,7 +41,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
+" Add after downloading a font from nerdfonts.com
+" Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ThePrimeagen/harpoon'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neovim/nvim-lspconfig'
