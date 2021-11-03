@@ -124,6 +124,21 @@ nnoremap J mzJ`z
 map <C-n> :NERDTreeToggle<CR>
 map <leader>f :NERDTreeFind<CR>
 
+lua <<EOF
+local actions = require "telescope.actions"
+require("telescope").setup {
+  pickers = {
+    buffers = {
+      mappings = {
+        i = {
+          ["<c-d>"] = actions.delete_buffer
+        }
+      }
+    }
+  }
+}
+EOF
+
 " Find files using Telescope command-line sugar.
 nnoremap <C-f> <cmd>Telescope find_files<CR>
 nnoremap <leader>tg <cmd>Telescope live_grep<CR>
