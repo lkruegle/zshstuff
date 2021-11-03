@@ -41,6 +41,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'ThePrimeagen/harpoon'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 "Plug 'nvim-lua/completion-nvim'
@@ -60,15 +61,15 @@ colorscheme gruvbox
 
 lua <<EOF
 -- configure lsp
--- require('lspconfig').pyright.setup{}
+-- require('lspconfig').pyright.setup({})
 
 -- configure treesitter
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
     highlight = {enable = true},
 --    -- I want to add:
 --    -- But it keeps dedenting methods as I add type info which is annoying as fuck
 --    -- indent = {enable = true},
-}
+})
 EOF
 
 " Git blame message config
@@ -114,6 +115,27 @@ inoremap } }<c-g>u
 inoremap [ [<c-g>u
 inoremap ] ]<c-g>u
 
+lua <<EOF
+-- configure Harpoon
+require('harpoon').setup({})
+
+local map = vim.api.nvim_set_keymap
+-- map the leader key
+map('n', '<Space>', '', {})
+vim.g.mapleader = ' '  -- 'vim.g' sets global variables
+options = { noremap = true }
+
+map('n', '<leader>h', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', options)
+map('n', '<leader>m', ':lua require("harpoon.mark").add_file()<CR>', options)
+
+-- Loop through and set these to harpoon marks in order
+map_keys = {'u', 'i', 'o', 'p'}
+for count = 1, #(map_keys) do
+    remap = string.format('<leader>%s', map_keys[count])
+    command = string.format(':lua require("harpoon.ui").nav_file(%s)<CR>', count)
+    map('n', remap, command, options)
+end
+EOF
 
 " Keep cursor where it is when joining lines
 nnoremap J mzJ`z
@@ -125,7 +147,7 @@ map <leader>f :NERDTreeFind<CR>
 " Find files using Telescope command-line sugar.
 nnoremap <C-f> <cmd>Telescope find_files<CR>
 nnoremap <leader>tg <cmd>Telescope live_grep<CR>
-nnoremap <leader>tb <cmd>Telescope buffers<CR>
+nnoremap <leader>b <cmd>Telescope buffers<CR>
 nnoremap <leader>th <cmd>Telescope help_tags<CR>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 
@@ -139,10 +161,6 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
-
-nnoremap <C-T> :tabnew<CR>
-nnoremap <S-Tab> :tabprev<CR>
-nnoremap <Tab> :tabnext<CR>
 
 " Mappings for changing directory
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
