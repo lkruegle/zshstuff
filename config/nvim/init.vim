@@ -100,6 +100,8 @@ nnoremap Y y$
 nnoremap <leader>gb :GitBlameToggle<CR>
 nnoremap <leader>n :nohl<CR>
 
+nnoremap <leader>ss /<C-r><C-w><CR>
+nnoremap <leader>sr :%s/<C-r><C-w>/
 " Force n and N to always search forward and backwards respectively
 " (zz keeps cursor centered)
 nnoremap <expr> n 'Nn'[v:searchforward] . "zzzv"
@@ -166,6 +168,7 @@ nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>ct :cd ~/code/catalant<CR>:pwd<CR>
 
+" Replace with sbdchd/neoformat
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
