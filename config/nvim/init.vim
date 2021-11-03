@@ -41,6 +41,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ThePrimeagen/harpoon'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neovim/nvim-lspconfig'
@@ -143,7 +144,7 @@ map <C-n> :NERDTreeToggle<CR>
 map <leader>f :NERDTreeFind<CR>
 
 " Find files using Telescope command-line sugar.
-nnoremap <C-f> <cmd>Telescope find_files<CR>
+nnoremap <C-f> <cmd>Telescope git_files<CR>
 nnoremap <leader>tg <cmd>Telescope live_grep<CR>
 nnoremap <leader>b <cmd>Telescope buffers<CR>
 nnoremap <leader>th <cmd>Telescope help_tags<CR>

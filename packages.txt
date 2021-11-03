@@ -4,3 +4,5 @@ zsh-syntax-highlighting
 tree
 neovim
 fzf
+ripgrep
+fd
