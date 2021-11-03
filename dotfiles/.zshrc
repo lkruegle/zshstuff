@@ -20,6 +20,10 @@ alias gohome="cd ~"
 # automatically run format then test
 alias autotest="ct format && ct test"
 
+gch() {
+    git checkout $(git branch | fzf | tr -d '[:space:]*')
+}
+
 newb() {
     if [ -n "$1" ]
     then
