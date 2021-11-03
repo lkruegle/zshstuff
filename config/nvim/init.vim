@@ -107,32 +107,28 @@ nnoremap <leader>sr :%s/<C-r><C-w>/
 nnoremap <expr> n 'Nn'[v:searchforward] . "zzzv"
 nnoremap <expr> N 'nN'[v:searchforward] . "zzzv"
 
-"Add undo break points at common characters
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ( (<c-g>u
-inoremap ) )<c-g>u
-inoremap { {<c-g>u
-inoremap } }<c-g>u
-inoremap [ [<c-g>u
-inoremap ] ]<c-g>u
-
 lua <<EOF
--- configure Harpoon
-require('harpoon').setup({})
-
 local map = vim.api.nvim_set_keymap
 -- map the leader key
 map('n', '<Space>', '', {})
 vim.g.mapleader = ' '  -- 'vim.g' sets global variables
+
 options = { noremap = true }
+
+undo_breaks = {',','.','(',')','{','}','[',']'}
+for i, char in ipairs(undo_breaks) do
+    map('i', char, string.format('%s<c-g>u', char), options)
+end
+
+-- configure Harpoon
+require('harpoon').setup({})
 
 map('n', '<leader>h', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', options)
 map('n', '<leader>m', ':lua require("harpoon.mark").add_file()<CR>', options)
 
 -- Loop through and set these to harpoon marks in order
 map_keys = {'u', 'i', 'o', 'p'}
-for count = 1, #(map_keys) do
+for count, key in ipairs(map_keys) do
     remap = string.format('<leader>%s', map_keys[count])
     command = string.format(':lua require("harpoon.ui").nav_file(%s)<CR>', count)
     map('n', remap, command, options)
@@ -151,7 +147,7 @@ nnoremap <C-f> <cmd>Telescope find_files<CR>
 nnoremap <leader>tg <cmd>Telescope live_grep<CR>
 nnoremap <leader>b <cmd>Telescope buffers<CR>
 nnoremap <leader>th <cmd>Telescope help_tags<CR>
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+nnoremap <leader>gg :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 
 " Open a split
 nnoremap <leader>vs :vsp<space>
