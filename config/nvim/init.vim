@@ -166,10 +166,6 @@ nnoremap <leader>b <cmd>Telescope buffers<CR>
 nnoremap <leader>th <cmd>Telescope help_tags<CR>
 nnoremap <leader>gg :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 
-" Open a split
-nnoremap <leader>vs :vsp<space>
-nnoremap <leader>hs :sp<space>
-
 " Remaps pane switching to CTRL+h,j,k,l
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
