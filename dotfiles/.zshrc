@@ -20,8 +20,12 @@ alias gohome="cd ~"
 # automatically run format then test
 alias autotest="ct format && ct test"
 
+findbranch() {
+    git branch | fzf | tr -d '[:space:]*'
+}
+
 gch() {
-    git checkout $(git branch | fzf | tr -d '[:space:]*')
+    git checkout $(findbranch)
 }
 
 newb() {
