@@ -173,6 +173,11 @@ nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 nnoremap <leader>zz :let &scrolloff=999-&scrolloff<CR>
 
+" Tab stuff
+nnoremap <C-T> :tabnew<CR>
+nnoremap <S-Tab> :tabprev<CR>
+nnoremap <Tab> :tabnext<CR>
+
 " Mappings for changing directory
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>ct :cd ~/code/catalant<CR>:pwd<CR>
