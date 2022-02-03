@@ -93,8 +93,8 @@ let mapleader = " "
 " To force reparse current buffer to fix highlighting
 nnoremap <leader>ts :write<CR> :edit<CR> :TSBufEnable highlight<CR>
 
-"undotree mapping
-nnoremap <leader>u :UndotreeToggle<CR>
+" undotree mapping *currently shadowed by harpoon mappings
+" nnoremap <leader>u :UndotreeToggle<CR>
 
 " Make Y like D/C, yank to end of line
 nnoremap Y y$
@@ -141,7 +141,7 @@ EOF
 nnoremap J mzJ`z
 
 " Toggle Nerd Tree with CTRL +n
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 map <leader>f :NERDTreeFind<CR>
 
 lua <<EOF
@@ -181,6 +181,11 @@ nnoremap <Tab> :tabnext<CR>
 " Mappings for changing directory
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <leader>ct :cd ~/code/catalant<CR>:pwd<CR>
+
+" Mappings for navigating quick-fix list
+nnoremap <C-n> :cn<CR>
+nnoremap <C-p> :cp<CR>
+
 
 " Replace with sbdchd/neoformat
 fun! TrimWhitespace()
