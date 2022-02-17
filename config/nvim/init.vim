@@ -123,7 +123,9 @@ for i, char in ipairs(undo_breaks) do
 end
 
 -- configure Harpoon
-require('harpoon').setup({})
+require('harpoon').setup({
+    menu = { width = math.max(math.floor(vim.api.nvim_win_get_width(0) / 3), 60) }
+})
 
 map('n', '<leader>h', ':lua require("harpoon.ui").toggle_quick_menu()<CR>', options)
 map('n', '<leader>m', ':lua require("harpoon.mark").add_file()<CR>', options)
