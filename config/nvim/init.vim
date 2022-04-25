@@ -149,15 +149,18 @@ map <leader>f :NERDTreeFind<CR>
 lua <<EOF
 local actions = require "telescope.actions"
 require("telescope").setup {
-  pickers = {
-    buffers = {
-      mappings = {
-        i = {
-          ["<c-d>"] = actions.delete_buffer
+    file_ignore_patterns = {
+        '%/static/vendor/%'
+    },
+    pickers = {
+        buffers = {
+            mappings = {
+                i = {
+                ["<c-d>"] = actions.delete_buffer
+                }
+            }
         }
-      }
     }
-  }
 }
 EOF
 
