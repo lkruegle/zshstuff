@@ -55,6 +55,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-abolish'
+Plug 'EdenEast/nightfox.nvim'
 call plug#end()
 
 set background=dark
