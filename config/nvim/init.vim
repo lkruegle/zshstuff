@@ -42,7 +42,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 " Add after downloading a font from nerdfonts.com
-" Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ThePrimeagen/harpoon'
 Plug 'gruvbox-community/gruvbox'
 Plug 'neovim/nvim-lspconfig'
@@ -55,7 +55,8 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-abolish'
-Plug 'EdenEast/nightfox.nvim'
+Plug 'akinsho/toggleterm.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 set background=dark
@@ -73,6 +74,39 @@ require('nvim-treesitter.configs').setup({
 --    -- But it keeps dedenting methods as I add type info which is annoying as fuck
 --    -- indent = {enable = true},
 })
+
+-- configure toggleterm
+require("toggleterm").setup({
+    open_mapping = [[<c-\>]],
+    hide_numbers = true,
+    start_in_insert = true,
+    close_on_exit = true,
+    direction = 'float',
+    shading_factory = 2,
+    float_opts = {
+        border = 'curved',
+        width = math.min(math.floor(vim.api.nvim_win_get_width(0) / 2), 200),
+        highlights = {
+            border = "Normal",
+            background = "Normal"
+        },
+    }
+})
+
+function _G.set_terminal_keymaps()
+    local opts = {noremap = true}
+    vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+end
+
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+require("gitsigns").setup({})
+
+require("nvim-web-devicons").setup({})
 EOF
 
 " Git blame message config
