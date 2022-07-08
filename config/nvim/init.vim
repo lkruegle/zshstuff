@@ -172,16 +172,7 @@ for count, key in ipairs(map_keys) do
     command = string.format(':lua require("harpoon.ui").nav_file(%s)<CR>', count)
     map('n', remap, command, options)
 end
-EOF
 
-" Keep cursor where it is when joining lines
-nnoremap J mzJ`z
-
-" Toggle Nerd Tree with CTRL +n
-" map <C-n> :NERDTreeToggle<CR>
-map <leader>f :NERDTreeFind<CR>
-
-lua <<EOF
 local actions = require "telescope.actions"
 require("telescope").setup {
     file_ignore_patterns = {
@@ -198,6 +189,14 @@ require("telescope").setup {
     }
 }
 EOF
+
+
+" Keep cursor where it is when joining lines
+nnoremap J mzJ`z
+
+" Toggle Nerd Tree with CTRL +n
+" map <C-n> :NERDTreeToggle<CR>
+map <leader>f :NERDTreeFind<CR>
 
 " Find files using Telescope command-line sugar.
 nnoremap <C-f> <cmd>Telescope git_files<CR>
