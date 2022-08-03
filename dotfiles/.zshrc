@@ -1,6 +1,8 @@
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
 
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
 export EDITOR=nvim
 export GIT_EDITOR=$EDITOR
 
@@ -44,8 +46,7 @@ alias sc="source $HOME/.zshrc"
 autoload -Uz compinit && compinit -u
 
 # enable syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # enable vim mode
 # bindkey -v
 
