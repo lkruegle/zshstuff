@@ -1,4 +1,5 @@
 #!/bin/sh
+# dumb
 
 # Install Brew
 if which brew > /dev/null; then
