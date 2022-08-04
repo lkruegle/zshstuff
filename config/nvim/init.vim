@@ -57,6 +57,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-abolish'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'Glench/Vim-Jinja2-Syntax'
 call plug#end()
 
 set background=dark
@@ -69,6 +70,7 @@ lua <<EOF
 
 -- configure treesitter
 require('nvim-treesitter.configs').setup({
+    -- Remember to 'TSInstall <language>'
     highlight = {enable = true},
 --    -- I want to add:
 --    -- But it keeps dedenting methods as I add type info which is annoying as fuck
@@ -236,5 +238,5 @@ endfun
 augroup GROUP_1
     autocmd BufWritePre * :call TrimWhitespace()
     "autocmd BufEnter * lua require'completion'.on_attach()
-    autocmd BufNewFile,BufRead,BufEnter *.html set syntax=htmljinja
+    "autocmd BufNewFile,BufRead,BufEnter *.html set syntax=htmljinja
 augroup END
