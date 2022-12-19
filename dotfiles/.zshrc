@@ -1,9 +1,10 @@
+PATH="$HOME/.local/bin":$PATH
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
 
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
-export EDITOR=nvim
+export EDITOR=lvim
 export GIT_EDITOR=$EDITOR
 
 autoload -U promptinit; promptinit
