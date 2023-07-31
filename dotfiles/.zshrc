@@ -4,7 +4,7 @@ export PATH
 
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
-export EDITOR=lvim
+export EDITOR=vim
 export GIT_EDITOR=$EDITOR
 
 autoload -U promptinit; promptinit
@@ -53,4 +53,4 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source ~/.zshrc_local
+# source ~/.zshrc_local
