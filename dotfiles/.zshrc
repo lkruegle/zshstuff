@@ -4,7 +4,7 @@ export PATH
 
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
-export EDITOR=vim
+export EDITOR=nvim
 export GIT_EDITOR=$EDITOR
 
 autoload -U promptinit; promptinit
